@@ -9,10 +9,10 @@ import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.service.EstudianteService;
 
 @SpringBootApplication
-public class Pa2U2P4AcDaApplication implements CommandLineRunner {
-
+public class Pa2U2P4AcDaApplication implements CommandLineRunner{
+	
 	@Autowired
-	public EstudianteService estudianteService;
+	private EstudianteService estudianteService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
@@ -20,23 +20,24 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
 		
-	 Estudiante estudiante = new Estudiante();
-	 Estudiante estudiante1 = new Estudiante();
-
-	 estudiante.setApellido("Andrade");
-	 estudiante.setCedula("cedula");
-	 estudiante.setNombre("Ale");
-	 
-	 estudiante1.setApellido("Cacuango");
-	 estudiante1.setCedula("cedula");
-	 estudiante1.setNombre("Mau");
-	 
-		estudianteService.guardar(estudiante);
-		estudianteService.guardar(estudiante1);
+		Estudiante estudiante = new Estudiante();
+		estudiante.setNombre("Dennisse");
+		estudiante.setApellido("Quinaucho");
+		estudiante.setCedula("175606411");
+		
+		Estudiante estudiante1 = new Estudiante();
+		estudiante1.setNombre("Mauricio");
+		estudiante1.setApellido("Alban");
+		estudiante1.setCedula("810087");
+		
+		//this.estudianteService.guardar(estudiante);
+		//this.estudianteService.guardar(estudiante1);
+		this.estudianteService.buscarPorNumero("1756064");	
+		this.estudianteService.actualizar(estudiante);
+		this.estudianteService.borrar("1756064");
 		
 	}
-	
-
 
 }
