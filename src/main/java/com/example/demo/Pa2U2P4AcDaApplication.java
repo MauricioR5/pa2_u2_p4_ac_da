@@ -1,18 +1,28 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.cuenta.modelo.Cuenta;
+import com.example.demo.cuenta.service.CuentaService;
 import com.example.demo.service.EstudianteService;
 
 @SpringBootApplication
-public class Pa2U2P4AcDaApplication implements CommandLineRunner{
-	
+public class Pa2U2P4AcDaApplication implements CommandLineRunner {
+
 	@Autowired
 	private EstudianteService estudianteService;
+
+	@Autowired
+	private CuentaService cuentaService;
+
+	@Autowired
+	private Cuenta cuenta;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
@@ -21,20 +31,16 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		
-		Estudiante estudiante = new Estudiante();
-		estudiante.setNombre("Dennisse");
-		estudiante.setApellido("Andrade");
-		estudiante.setCedula("175606411");
-		
-		Estudiante estudiante1 = new Estudiante();
-		estudiante1.setNombre("Mauricio");
-		estudiante1.setApellido("Cacuango");
-		estudiante1.setCedula("810087");
-		
-		this.estudianteService.guardar(estudiante);
-		this.estudianteService.guardar(estudiante1);
-		
+
+		this.cuenta.setCedulaPropietario("12315");
+		this.cuenta.setFechaApertura(LocalDateTime.now());
+		this.cuenta.setNumero("12345");
+		this.cuenta.setTipo("Ahorros");
+		this.cuenta.setSaldo(new BigDecimal(50));
+
+		cuentaService.apertura(cuenta);
+
+		System.out.println(this.cuenta);
 	}
 
 }

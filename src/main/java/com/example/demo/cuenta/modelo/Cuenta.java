@@ -1,7 +1,7 @@
 package com.example.demo.cuenta.modelo;
 
-import java.awt.font.NumericShaper;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
