@@ -19,7 +19,7 @@ public class EstudianteServiceImpl implements EstudianteService {
 
 	@Override
 	public void actualizar(Estudiante estudiante) {
-		this.estudianteRepository.insertar(estudiante);
+		this.estudianteRepository.actualizar(estudiante);
 		
 	}
 
