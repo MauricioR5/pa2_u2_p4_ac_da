@@ -8,21 +8,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.cuenta.modelo.Cuenta;
-import com.example.demo.cuenta.service.CuentaService;
+
 import com.example.demo.service.EstudianteService;
 
 @SpringBootApplication
 public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
-	@Autowired
-	private EstudianteService estudianteService;
 
-	@Autowired
-	private CuentaService cuentaService;
-
-	@Autowired
-	private Cuenta cuenta;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
@@ -32,15 +24,7 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		this.cuenta.setCedulaPropietario("12315");
-		this.cuenta.setFechaApertura(LocalDateTime.now());
-		this.cuenta.setNumero("12345");
-		this.cuenta.setTipo("Ahorros");
-		this.cuenta.setSaldo(new BigDecimal(50));
-
-		cuentaService.apertura(cuenta);
-
-		System.out.println(this.cuenta);
+	
 	}
 
 }
