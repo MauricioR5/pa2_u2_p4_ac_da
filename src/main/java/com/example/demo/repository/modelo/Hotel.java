@@ -3,11 +3,18 @@ package com.example.demo.repository.modelo;
 import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "habitacion")
 public class Hotel {
-
+	@GeneratedValue(generator = "seq_habitacion", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "seq_habitacion", sequenceName = "seq_habitacion", allocationSize = 1)
 	@Id
 	@Column(name = "hote_id")
 	private Integer id;

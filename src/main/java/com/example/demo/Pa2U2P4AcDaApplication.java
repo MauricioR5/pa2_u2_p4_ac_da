@@ -1,25 +1,26 @@
 package com.example.demo;
 
-import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Ciudadano;
-import com.example.demo.repository.modelo.Empleado;
-import com.example.demo.service.CiudadanoService;
-import com.example.demo.service.EmpleadoService;
+import com.example.demo.repository.modelo.Autor;
+import com.example.demo.repository.modelo.Libro;
+import com.example.demo.service.AutorService;
+import com.example.demo.service.LibroService;
 
 @SpringBootApplication
 public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
 	@Autowired
-	private CiudadanoService ciudadanoService;
+	private LibroService libroService;
 
 	@Autowired
-	private EmpleadoService empleadoService;
+	private AutorService autorService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
@@ -29,63 +30,33 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		// agregar
-		Ciudadano ciudadano = new Ciudadano();
-		ciudadano.setApellido("Andrade");
-		ciudadano.setNombre("Dennisse");
-		ciudadano.setCedula("12344445");
-
-		this.ciudadanoService.agregar(ciudadano);
-
-		Ciudadano ciudadano1 = new Ciudadano();
-		ciudadano1.setApellido("Cacuango");
-		ciudadano1.setNombre("Mauricio");
-		ciudadano1.setCedula("1745246464");
-
-		this.ciudadanoService.agregar(ciudadano1);
+		Libro libro = new Libro();
+		libro.setEditorial("La uce");
+		libro.setTitulo("Como jalarse el semestre");
 		
-		Ciudadano ciudadano2 = new Ciudadano();
-		ciudadano2.setApellido("Cacuango");
-		ciudadano2.setNombre("Mauricio");
-		ciudadano2.setCedula("1745246464");
+		
+		Autor autor = new Autor();
+		autor.setNombre("Mauricio");
+		autor.setApellido("Ocapana");
+		
+		
+		Set<Autor> autores = new HashSet<>();
+		autores.add(autor);
+		
+		libro.setAutores(autores);
 
-	//	this.ciudadanoService.agregar(ciudadano2);
+		
+		Set<Libro> libros = new HashSet<>();
+		libros.add(libro);
 
-		// actualizar
-		// ciudadano.setNombre("alexandra");
-		// this.ciudadanoService.actualizar(ciudadano1);
-
-		// borrar
-		// this.ciudadanoService.borrar(ciudadano.getCedula());
-
-		// buscar
-		// this.ciudadanoService.buscarPorCedula(ciudadano1.getCedula());
-
-		// EMPLEADO*******************************************************
-		// insertar
-		Empleado empleado = new Empleado();
-		empleado.setCargo("Admin");
-		empleado.setSueldo(new BigDecimal(1000));
-		empleado.setCiudadano(ciudadano2);
-
-		this.empleadoService.agregar(empleado);
-
-	/*	Empleado empleado1 = new Empleado();
-		empleado1.setCargo("RH");
-		empleado1.setSueldo(new BigDecimal(500));
-		empleado1.setCiudadano(ciudadano1);
-
-		this.empleadoService.agregar(empleado1);*/
-
-		// borrar
-		// this.empleadoService.borrar(empleado.getCiudadano().getCedula());
-
-		// actualizar
-		// empleado.setCiudadano(ciudadano1);
-		// this.empleadoService.actualizar(empleado);
-
-		// buscar
-		// this.empleadoService.buscarPorId(empleado.getCiudadano().getCedula());
+		autor.setLibros(libros);
+		
+		this.libroService.agregar(libro);
+	//	autorService.agregar(autor);
+		
+		
+	
+	
 	}
 
 }
