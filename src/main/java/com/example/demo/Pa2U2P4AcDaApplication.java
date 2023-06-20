@@ -32,12 +32,16 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
 		Libro libro = new Libro();
 		libro.setEditorial("La uce");
-		libro.setTitulo("Como jalarse el semestre");
+		libro.setTitulo("La importancia de llamarse Jhon");
 		
+		Libro libro1 = new Libro();
+		libro1.setEditorial("La uce");
+		libro1.setTitulo("Mil y una noches");
+	
 		
 		Autor autor = new Autor();
 		autor.setNombre("Mauricio");
-		autor.setApellido("Ocapana");
+		autor.setApellido("Cacuango");
 		
 		
 		Set<Autor> autores = new HashSet<>();
@@ -48,11 +52,12 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 		
 		Set<Libro> libros = new HashSet<>();
 		libros.add(libro);
+		libros.add(libro1);
 
 		autor.setLibros(libros);
 		
-		this.libroService.agregar(libro);
-	//	autorService.agregar(autor);
+		//this.libroService.agregar(libro);
+		autorService.agregar(autor);
 		
 		
 	
