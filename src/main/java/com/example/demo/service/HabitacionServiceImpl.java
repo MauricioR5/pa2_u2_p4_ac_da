@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.HabitacionRepository;
 import com.example.demo.repository.modelo.Habitacion;
 
+@Service
 public class HabitacionServiceImpl implements HabitacionService {
 
 	@Autowired

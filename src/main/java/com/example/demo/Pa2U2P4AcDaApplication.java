@@ -1,26 +1,28 @@
 package com.example.demo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Autor;
-import com.example.demo.repository.modelo.Libro;
-import com.example.demo.service.AutorService;
-import com.example.demo.service.LibroService;
+import com.example.demo.repository.modelo.Habitacion;
+import com.example.demo.repository.modelo.Hotel;
+import com.example.demo.service.HabitacionService;
+import com.example.demo.service.HotelService;
 
 @SpringBootApplication
 public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
+	
 	@Autowired
-	private LibroService libroService;
+	private HabitacionService habitacionService;
+	@Autowired
+	private HotelService hotelService;
 
-	@Autowired
-	private AutorService autorService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
@@ -30,37 +32,29 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Libro libro = new Libro();
-		libro.setEditorial("La uce");
-		libro.setTitulo("La importancia de llamarse Jhon");
 		
-		Libro libro1 = new Libro();
-		libro1.setEditorial("La uce");
-		libro1.setTitulo("Mil y una noches");
-	
+		Habitacion habitacion =  new Habitacion();
+		Habitacion habitacion1 =  new Habitacion();
+		Hotel hotel = new Hotel();
 		
-		Autor autor = new Autor();
-		autor.setNombre("Mauricio");
-		autor.setApellido("Cacuango");
+		List<Habitacion> habitaciones = new ArrayList<>();
+		hotel.setDireccion("Av. La Gasca");
+		hotel.setHabitaciones(habitaciones);
 		
 		
-		Set<Autor> autores = new HashSet<>();
-		autores.add(autor);
 		
-		libro.setAutores(autores);
-
+		habitacion.setNumero("69");
+		habitacion.setValor(new BigDecimal(150));
 		
-		Set<Libro> libros = new HashSet<>();
-		libros.add(libro);
-		libros.add(libro1);
-
-		autor.setLibros(libros);
+		habitacion1.setNumero("50");
+		habitacion1.setValor(new BigDecimal(250));
 		
-		//this.libroService.agregar(libro);
-		autorService.agregar(autor);
+		habitaciones.add(habitacion);
+		habitaciones.add(habitacion1);
 		
+		hotel.setHabitaciones(habitaciones);
+		hotelService.agregar(hotel);
 		
-	
 	
 	}
 
