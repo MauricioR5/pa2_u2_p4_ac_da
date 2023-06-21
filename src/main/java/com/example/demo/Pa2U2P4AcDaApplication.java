@@ -1,27 +1,25 @@
 package com.example.demo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Autor;
-import com.example.demo.repository.modelo.Libro;
-import com.example.demo.service.AutorService;
-import com.example.demo.service.LibroService;
+import com.example.demo.repository.modelo.Alumno;
+import com.example.demo.repository.modelo.Materia;
+import com.example.demo.repository.modelo.Matricula;
+import com.example.demo.service.MatriculaService;
 
 @SpringBootApplication
 public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
 	@Autowired
-	private LibroService libroService;
-
-	@Autowired
-	private AutorService autorService;
-
+	MatriculaService matriculaService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
 	}
@@ -30,31 +28,33 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Libro libro = new Libro();
-		libro.setEditorial("La uce");
-		libro.setTitulo("Como jalarse el semestre");
+		Materia materia = new Materia();
+		
+		materia.setNombre("Programacion II");
+		
+		Alumno alumno = new Alumno();
+		
+		alumno.setNombre("Mauricio");
+		
+		Matricula matricula = new Matricula();
+		
+		matricula.setFecha(LocalDateTime.now());
+		matricula.setMateria(materia);
+		matricula.setNumero("1");
+		matricula.setAlumno(alumno);
+		
+		List<Matricula> matriculas = new ArrayList<>();
+		
+		matriculas.add(matricula);
+		
+		alumno.setMatriculas(matriculas);
+		materia.setMatriculas(matriculas);
 		
 		
-		Autor autor = new Autor();
-		autor.setNombre("Mauricio");
-		autor.setApellido("Ocapana");
+		this.matriculaService.guardar(matricula);
 		
 		
-		Set<Autor> autores = new HashSet<>();
-		autores.add(autor);
-		
-		libro.setAutores(autores);
-
-		
-		Set<Libro> libros = new HashSet<>();
-		libros.add(libro);
-
-		autor.setLibros(libros);
-		
-		this.libroService.agregar(libro);
-	//	autorService.agregar(autor);
-		
-		
+	
 	
 	
 	}
