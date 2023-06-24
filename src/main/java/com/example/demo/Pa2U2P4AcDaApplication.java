@@ -9,7 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.repository.EstudianteRepository;
 import com.example.demo.repository.modelo.Alumno;
+import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.repository.modelo.Materia;
 import com.example.demo.repository.modelo.Matricula;
 import com.example.demo.service.MatriculaService;
@@ -18,7 +20,7 @@ import com.example.demo.service.MatriculaService;
 public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
 	@Autowired
-	MatriculaService matriculaService;
+	EstudianteRepository estudianteRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
@@ -28,35 +30,21 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Materia materia = new Materia();
 		
-		materia.setNombre("Programacion II");
+		Estudiante estudiante = new Estudiante();
+		estudiante.setApellido("Naranjito");
+		estudiante.setCedula("984984964");
+		estudiante.setNombre("Cristiana");
 		
-		Alumno alumno = new Alumno();
+		//this.estudianteRepository.insertar(estudiante);
+		this.estudianteRepository.seleccionarPorApellido("Naranjito");
 		
-		alumno.setNombre("Mauricio");
+
+		this.estudianteRepository.seleccionarListPorApellido("Cacuango");
+
+		this.estudianteRepository.seleccionarPorApellidoyNombre("Naranjito", "Cristiana");
+		this.estudianteRepository.seleccionarPorApellidoTyped("Naranjito");
 		
-		Matricula matricula = new Matricula();
-		
-		matricula.setFecha(LocalDateTime.now());
-		matricula.setMateria(materia);
-		matricula.setNumero("1");
-		matricula.setAlumno(alumno);
-		
-		List<Matricula> matriculas = new ArrayList<>();
-		
-		matriculas.add(matricula);
-		
-		alumno.setMatriculas(matriculas);
-		materia.setMatriculas(matriculas);
-		
-		
-		this.matriculaService.guardar(matricula);
-		
-		
-	
-	
-	
 	}
 
 }
