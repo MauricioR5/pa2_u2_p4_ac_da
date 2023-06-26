@@ -1,11 +1,16 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Autor;
+import com.example.demo.repository.modelo.Estudiante;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -37,5 +42,44 @@ public class AutorRepositoryImpl implements AutorRepository{
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Autor.class, id);
 	}
+
+	@Override
+	public Autor seleccionarPorApellido(String apellido) {
+		Query myQuery = this.entityManager.createQuery("SELECT e FROM Autor e WHERE e.apellido = :datoApellido");
+		myQuery.setParameter("datoApellido", apellido);
+		return (Autor) myQuery.getSingleResult();
+	}
+
+	@Override
+	public Autor seleccionarPorApellidoTyped(String apellido) {
+		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT e FROM Autor e WHERE e.apellido = :datoApellido", Autor.class);
+		myQuery.setParameter("datoApellido", apellido);
+		return myQuery.getSingleResult();
+	}
+
+	@Override
+	public List<Autor> seleccionarListPorApellido(String apellido) {
+		Query myQuery = this.entityManager.createQuery("SELECT e FROM Autor e WHERE e.apellido = :datoApellido");
+		myQuery.setParameter("datoApellido", apellido);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public Autor seleccionarPorApellidoyNombre(String apellido, String nombre) {
+		Query myQuery = this.entityManager
+				.createQuery("SELECT e FROM Autor e WHERE e.apellido = :datoApellido AND e.nombre =: datoNombre");
+		myQuery.setParameter("datoApellido", apellido);
+		myQuery.setParameter("datoNombre", nombre);
+		return (Autor) myQuery.getSingleResult();
+		
+	}
+
+	@Override
+	public List<Autor> seleccionarListPorNombreTyped(String nombre) {
+		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT e FROM Autor e WHERE e.nombre = :datoNombre", Autor.class);
+		myQuery.setParameter("datoNombre", nombre);
+		return myQuery.getResultList();
+	}
+	
 
 }

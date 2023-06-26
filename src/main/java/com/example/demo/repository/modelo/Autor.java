@@ -28,9 +28,6 @@ public class Autor {
 	@Column(name = "autor_apellido")
 	private String apellido;
 
-	@ManyToMany(mappedBy = "autores", cascade = CascadeType.ALL)
-	private Set<Libro> libros; // representa un conjunto de datos
-
 	// Set y Get
 
 	public Integer getId() {
@@ -55,14 +52,12 @@ public class Autor {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	
 	}
 
-	public Set<Libro> getLibros() {
-		return libros;
-	}
-
-	public void setLibros(Set<Libro> libros) {
-		this.libros = libros;
+	@Override
+	public String toString() {
+		return "Autor [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
 
 }
