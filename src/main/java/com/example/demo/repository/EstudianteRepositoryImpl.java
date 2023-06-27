@@ -73,9 +73,17 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
 	@Override
 	public Estudiante seleccionarPorApellidoTyped(String apellido) {
-		TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.apellido = :datoApellido", Estudiante.class);
+		TypedQuery<Estudiante> myQuery = this.entityManager
+				.createQuery("SELECT e FROM Estudiante e WHERE e.apellido = :datoApellido", Estudiante.class);
 		myQuery.setParameter("datoApellido", apellido);
 		return (Estudiante) myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante seleccionarPorApellidoNamed(String apellido) {
+		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("Estudiante.buscarPorApellido",Estudiante.class);
+		myQuery.setParameter("datoApellido", apellido);
+		return  myQuery.getSingleResult();
 	}
 
 }

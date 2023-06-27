@@ -16,6 +16,10 @@ import com.example.demo.repository.modelo.Materia;
 import com.example.demo.repository.modelo.Matricula;
 import com.example.demo.service.MatriculaService;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.SequenceGenerator;
+
 @SpringBootApplication
 public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 
@@ -45,6 +49,7 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 		this.estudianteRepository.seleccionarPorApellidoyNombre("Naranjito", "Cristiana");
 		this.estudianteRepository.seleccionarPorApellidoTyped("Naranjito");
 		
+	
 	}
 
 }
