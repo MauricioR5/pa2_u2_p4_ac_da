@@ -44,7 +44,7 @@ public class EstudianteServiceImpl implements EstudianteService {
 	}
 
 	@Override
-	public List<Estudiante> reporte(String apellido) {
+	public List<Estudiante> reportePorApellido(String apellido) {
 		return this.estudianteRepository.seleccionarListPorApellido(apellido);
 	}
 
@@ -56,6 +56,57 @@ public class EstudianteServiceImpl implements EstudianteService {
 	@Override
 	public Estudiante buscarPorApellidoTyped(String apellido) {
 		return this.estudianteRepository.seleccionarPorApellidoTyped(apellido);
+	}
+
+	@Override
+	public List<Estudiante> reportePorApellidoTyped(String apellido) {
+		return this.estudianteRepository.seleccionarListaPorApellidoTyped(apellido);
+	}
+
+	@Override
+	public Estudiante buscarPorApellidoNamed(String apellido) {
+		return this.estudianteRepository.seleccionarPorApellidoNamed(apellido);
+	}
+
+	@Override
+	public Estudiante buscarPorApellidoNamedQuery(String apellido) {
+		return this.estudianteRepository.seleccionarPorApellidoNamedQuery(apellido);
+	}
+
+	@Override
+	public Estudiante buscarPorApellidoNativeQuery(String apellido) {
+		return this.estudianteRepository.seleccionarPorApellidoNativeQuery(apellido);
+	}
+
+	@Override
+	public Estudiante buscarPorApellidoNativeQueryNamed(String apellido) {
+		return this.estudianteRepository.seleccionarPorApellidoNativeQueryNamed(apellido);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNativeQuery(String nombre) {
+		return this.estudianteRepository.seleccionarPorNombreNativeQueryNamed(nombre);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNamedQuery(String nombre) {
+		return this.estudianteRepository.seleccionarPorNombreNamedQuery(nombre);
+	}
+
+	@Override
+	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso) {
+		return this.estudianteRepository.seleccionarEstudianteDinamico(nombre, apellido, peso);
+		
+	}
+
+	@Override
+	public int borrarPorNombre(String nombre) {
+		return this.estudianteRepository.eliminarPorNombre(nombre);
+	}
+
+	@Override
+	public int actualizarPorApellido(String nombre, String apellido) {
+		return this.estudianteRepository.actualizarPorApellido(nombre, apellido);
 	}
 
 

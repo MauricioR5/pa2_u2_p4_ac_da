@@ -1,24 +1,20 @@
 package com.example.demo;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.repository.AutorRepository;
-import com.example.demo.repository.modelo.Autor;
-import com.example.demo.service.AutorService;
+import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.service.EstudianteService;
 
 
 @SpringBootApplication
 public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	
-	@Autowired
-	AutorRepository autorRepository;
 
 	@Autowired
-	AutorService autorService;
+	EstudianteService estudianteService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
@@ -27,22 +23,41 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 				
-		Autor autor = new Autor();
-		autor.setNombre("Miguel");
-		autor.setApellido("Cacuango");
+		Estudiante estudiante = new Estudiante();
+		estudiante.setNombre("Miguel");
+		estudiante.setApellido("Cacuango");
+		estudiante.setPeso(100.2);
 		
-		Autor autor1 = new Autor();
-		autor1.setNombre("Karen");
-		autor1.setApellido("Jacome");
+		Estudiante estudiante1 = new Estudiante();
+		estudiante1.setNombre("Karen");
+		estudiante1.setApellido("Jacome");
+		estudiante1.setPeso(50.0);
 		
-		Autor autor2 = new Autor();
-		autor2.setNombre("Mauricio");
-		autor2.setApellido("Cacuango");
+		Estudiante estudiante2 = new Estudiante();
+		estudiante2.setNombre("Cristina");
+		estudiante2.setApellido("Riviera");
+		estudiante2.setPeso(55.0);
 		
+		Estudiante estudiante3 = new Estudiante();
+		estudiante3.setNombre("Roberto");
+		estudiante3.setApellido("Guagua");
+		estudiante3.setPeso(70.0);
+		
+	//this.estudianteService.guardar(estudiante3);
+	//this.estudianteService.guardar(estudiante2);
+		
+		//System.out.println(this.estudianteService.buscarEstudianteDinamico("Miguel", "Cacuango", 100.2));
+		//System.out.println(this.estudianteService.buscarEstudianteDinamico("Karen", "Jacome", 50.0));
+
+		System.out.println(this.estudianteService.borrarPorNombre("Miguel"));
+		System.out.println(this.estudianteService.actualizarPorApellido("Alison", "Riviera"));
+		
+		
+	
 	/*	this.autorRepository.insertar(autor);
 		this.autorRepository.insertar(autor1);
 		this.autorRepository.insertar(autor2);
-		*/
+		
 		// Usando Query con single result
 		System.out.println(this.autorService.buscarPorApellido("Jacome"));
 		
@@ -59,10 +74,11 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 		// Usando TypedQuery con result list
 		List<Autor> lista1 = this.autorService.buscarListPorNombreTyped("Mauricio");
 		System.out.println("Lista de Resultado: ");
-		for(Autor listaAutor1 : lista1) {
-			System.out.println(listaAutor1);
+		for(Autor listaAutor1 : lista1) 
+			System.out.println(listaAutor1);}
+			
+		*/
 		
-		}
 		
 			}
 

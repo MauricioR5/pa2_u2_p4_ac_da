@@ -17,7 +17,28 @@ public interface EstudianteService {
 
 	public Estudiante buscarPorApellidoTyped(String apellido);
 
-	public List<Estudiante> reporte(String apellido);
+	public List<Estudiante> reportePorApellido(String apellido);
+	
+	public List<Estudiante> reportePorApellidoTyped(String apellido);
+
+	
+	public Estudiante buscarPorApellidoNamed(String apellido);
+
+	public Estudiante buscarPorApellidoNamedQuery(String apellido);
+
+	public Estudiante buscarPorApellidoNativeQuery(String apellido);
+
+	public Estudiante buscarPorApellidoNativeQueryNamed(String apellido);
+
+	public Estudiante buscarPorNombreNativeQuery(String nombre);
+
+	public Estudiante buscarPorNombreNamedQuery(String nombre);
+	
+	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso);
+	
+	public int borrarPorNombre(String nombre);
+
+	public int actualizarPorApellido(String nombre, String apellido);
 
 
 }
