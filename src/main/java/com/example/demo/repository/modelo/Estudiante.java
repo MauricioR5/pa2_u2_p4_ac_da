@@ -46,8 +46,7 @@ public class Estudiante {
 	private LocalDateTime fecha;
 	
 	@Column(name = "estu_peso")
-	private Double peso;
-	
+	private Double peso;	
 
 	
 	//GET Y set

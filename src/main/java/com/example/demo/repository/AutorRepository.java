@@ -27,5 +27,7 @@ public interface AutorRepository {
 	
 	public Autor seleccionarAutorDinamico(String nombre, String apellido, int numPublicaciones);
 
-
+	public int eliminarPorApellido(String apellido);
+	
+	public int actualizarPorNombre(int numPublicaciones, String nombre);
 }

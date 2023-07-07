@@ -23,7 +23,7 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 						
-		Autor autor1 = new Autor();
+		/*Autor autor1 = new Autor();
 		autor1.setApellido("Borges");
 		autor1.setNombre("Jorge");
 		autor1.setNumPublicaciones(50);
@@ -40,7 +40,10 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 		System.out.println(this.autorService.buscarAutorDinamico("Jorge", "Borges", 50));
 		System.out.println(this.autorService.buscarAutorDinamico("Kareen", "Jacome", 25));
 
-
+*/
+		
+		//this.autorService.borrarPorApellido("Jacome");
+		this.autorService.actualizarPublicaciones(50, "Luis");
 	}
 }
 

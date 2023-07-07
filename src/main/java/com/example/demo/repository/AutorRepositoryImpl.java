@@ -105,6 +105,23 @@ public class AutorRepositoryImpl implements AutorRepository{
 		
 		return myQueryFinal.getSingleResult();
 	}
+
+	@Override
+	public int eliminarPorApellido(String apellido) {
+		Query myQuery = this.entityManager.createQuery("DELETE FROM Autor e WHERE e.apellido =: datoApellido");
+		myQuery.setParameter("datoApellido", apellido);
+		return myQuery.executeUpdate();
+		
+	}
+
+	@Override
+	public int actualizarPorNombre(int numPublicaciones, String nombre) {
+		Query myQuery = this.entityManager.createQuery("UPDATE Autor e SET e.numPublicaciones = :datonumPublicaciones WHERE e.nombre =:datoNombre");
+		myQuery.setParameter("datonumPublicaciones", numPublicaciones);
+		myQuery.setParameter("datoNombre", nombre);
+		return myQuery.executeUpdate();
+	}
+	
 	
 
 }

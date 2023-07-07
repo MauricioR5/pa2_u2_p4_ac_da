@@ -69,6 +69,16 @@ public class AutorServiceImpl implements AutorService {
 		
 	}
 
+	@Override
+	public int borrarPorApellido(String apellido) {
+		return this.autorRepository.eliminarPorApellido(apellido);
+	}
+
+	@Override
+	public int actualizarPublicaciones(int numPublicaciones, String nombre) {
+		return this.autorRepository.actualizarPorNombre(numPublicaciones, nombre);
+	}
+
 	
 
 }

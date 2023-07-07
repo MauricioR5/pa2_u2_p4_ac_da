@@ -26,4 +26,7 @@ public interface AutorService {
 
 	public Autor buscarAutorDinamico(String nombre, String apellido, int numPublicaciones);
 	
+	public int borrarPorApellido(String apellido);
+	
+	public int actualizarPublicaciones(int numPublicaciones, String nombre);
 }
