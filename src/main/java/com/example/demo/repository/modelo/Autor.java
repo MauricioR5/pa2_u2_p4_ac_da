@@ -27,6 +27,9 @@ public class Autor {
 
 	@Column(name = "autor_apellido")
 	private String apellido;
+	
+	@Column(name = "autor_numeroPublicaciones")
+	private int numPublicaciones;
 
 	// Set y Get
 
@@ -55,9 +58,19 @@ public class Autor {
 	
 	}
 
+	public int getNumPublicaciones() {
+		return numPublicaciones;
+	}
+
+	public void setNumPublicaciones(int numPublicaciones) {
+		this.numPublicaciones = numPublicaciones;
+	}
+
 	@Override
 	public String toString() {
-		return "Autor [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "Autor [nombre=" + nombre + ", apellido=" + apellido + ", numPublicaciones=" + numPublicaciones + "]";
 	}
+
+	
 
 }

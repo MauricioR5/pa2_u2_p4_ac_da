@@ -63,6 +63,12 @@ public class AutorServiceImpl implements AutorService {
 		return this.autorRepository.seleccionarListPorNombreTyped(nombre);
 	}
 
+	@Override
+	public Autor buscarAutorDinamico(String nombre, String apellido, int numPublicaciones) {
+		return this.autorRepository.seleccionarAutorDinamico(nombre, apellido, numPublicaciones);
+		
+	}
+
 	
 
 }

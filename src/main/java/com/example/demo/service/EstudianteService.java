@@ -34,7 +34,7 @@ public interface EstudianteService {
 
 	public Estudiante buscarPorNombreNamedQuery(String nombre);
 	
-	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso);
+	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, int i);
 	
 	public int borrarPorNombre(String nombre);
 

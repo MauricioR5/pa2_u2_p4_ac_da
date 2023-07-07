@@ -24,6 +24,8 @@ public interface AutorRepository {
 	public Autor seleccionarPorApellidoyNombre(String apellido,String Nombre);
 	
 	public List<Autor> seleccionarListPorNombreTyped(String nombre);
+	
+	public Autor seleccionarAutorDinamico(String nombre, String apellido, int numPublicaciones);
 
 
 }

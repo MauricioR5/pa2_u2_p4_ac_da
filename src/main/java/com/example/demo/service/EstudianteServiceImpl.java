@@ -93,7 +93,6 @@ public class EstudianteServiceImpl implements EstudianteService {
 		return this.estudianteRepository.seleccionarPorNombreNamedQuery(nombre);
 	}
 
-	@Override
 	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, Double peso) {
 		return this.estudianteRepository.seleccionarEstudianteDinamico(nombre, apellido, peso);
 		
@@ -107,6 +106,12 @@ public class EstudianteServiceImpl implements EstudianteService {
 	@Override
 	public int actualizarPorApellido(String nombre, String apellido) {
 		return this.estudianteRepository.actualizarPorApellido(nombre, apellido);
+	}
+
+	@Override
+	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

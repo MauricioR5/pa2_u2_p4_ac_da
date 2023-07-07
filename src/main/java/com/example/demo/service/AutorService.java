@@ -24,4 +24,6 @@ public interface AutorService {
 	
 	public List<Autor> buscarListPorNombreTyped(String nombre);
 
+	public Autor buscarAutorDinamico(String nombre, String apellido, int numPublicaciones);
+	
 }

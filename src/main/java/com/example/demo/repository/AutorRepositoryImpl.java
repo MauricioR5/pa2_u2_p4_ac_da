@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Autor;
-import com.example.demo.repository.modelo.Estudiante;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -79,6 +82,28 @@ public class AutorRepositoryImpl implements AutorRepository{
 		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT e FROM Autor e WHERE e.nombre = :datoNombre", Autor.class);
 		myQuery.setParameter("datoNombre", nombre);
 		return myQuery.getResultList();
+	}
+
+	@Override
+	public Autor seleccionarAutorDinamico(String nombre, String apellido, int numPublicaciones) {
+		CriteriaBuilder myBuilder =  this.entityManager.getCriteriaBuilder();
+		CriteriaQuery<Autor> myCriteriaQuery = myBuilder.createQuery(Autor.class);
+		Root<Autor> miTablaFrom = myCriteriaQuery.from(Autor.class);
+		Predicate pNombre = myBuilder.equal(miTablaFrom.get("nombre"),nombre);
+		Predicate pApellido = myBuilder.equal(miTablaFrom.get("apellido"),apellido);
+		Predicate predicadoFinal = null;
+		
+		if(numPublicaciones<=5) {
+			predicadoFinal = myBuilder.or(pNombre, pApellido);
+			
+		}else {
+			predicadoFinal = myBuilder.and(pNombre, pApellido);
+			
+		}
+		myCriteriaQuery.select(miTablaFrom).where(predicadoFinal);
+		TypedQuery<Autor> myQueryFinal = this.entityManager.createQuery(myCriteriaQuery);
+		
+		return myQueryFinal.getSingleResult();
 	}
 	
 
