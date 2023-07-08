@@ -40,4 +40,10 @@ public class HotelRepositoryImpl implements HotelRepository{
 		return this.entityManager.find(Hotel.class, nombre);
 	}
 
+	@Override
+	public Hotel seleccionarPorId(Integer id) {
+		return this.entityManager.find(Hotel.class, id.SIZE);
+		
+	}
+
 }

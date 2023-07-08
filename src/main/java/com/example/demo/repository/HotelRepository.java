@@ -12,6 +12,7 @@ public interface HotelRepository {
 
 	public Hotel seleccionarPorNombre(String nombre);
 
+	public Hotel seleccionarPorId(Integer id);
 
 
 }

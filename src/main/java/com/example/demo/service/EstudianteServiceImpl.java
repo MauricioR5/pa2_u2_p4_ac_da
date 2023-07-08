@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.EstudianteRepository;
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
 @Service
 public class EstudianteServiceImpl implements EstudianteService {
@@ -112,6 +113,12 @@ public class EstudianteServiceImpl implements EstudianteService {
 	public Estudiante buscarEstudianteDinamico(String nombre, String apellido, int i) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<EstudianteDTO> buscarTodos() {
+		
+		return this.estudianteRepository.seleccionarTodosDTO();
 	}
 
 

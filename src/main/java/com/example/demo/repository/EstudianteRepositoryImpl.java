@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
-import aj.org.objectweb.asm.Type;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -188,6 +188,13 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 		myQuery.setParameter("datoApellido", apellido);
 		return myQuery.executeUpdate();
 		
+	}
+
+	@Override
+	public List<EstudianteDTO> seleccionarTodosDTO() {
+		TypedQuery<EstudianteDTO> myQuery =  this.entityManager.createQuery(
+				"SELECT NEW com.example.demo.repository.modelo.dto.EstudianteDTO(e.nombre, e.apellido) FROM Estudiante e", EstudianteDTO.class);
+		return myQuery.getResultList();
 	}
 
 

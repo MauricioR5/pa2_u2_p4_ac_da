@@ -1,13 +1,18 @@
 package com.example.demo;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Autor;
-import com.example.demo.repository.modelo.Estudiante;
-import com.example.demo.service.AutorService;
+import com.example.demo.repository.modelo.Habitacion;
+import com.example.demo.repository.modelo.Hotel;
 import com.example.demo.service.EstudianteService;
+import com.example.demo.service.HabitacionService;
+import com.example.demo.service.HotelService;
 
 
 @SpringBootApplication
@@ -15,7 +20,14 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	
 
 	@Autowired
-	AutorService autorService;
+	EstudianteService estudianteService;
+	
+	@Autowired
+	HotelService hotelService;
+	
+	@Autowired
+	HabitacionService habitacionService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4AcDaApplication.class, args);
 	}
@@ -23,27 +35,24 @@ public class Pa2U2P4AcDaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 						
-		/*Autor autor1 = new Autor();
-		autor1.setApellido("Borges");
-		autor1.setNombre("Jorge");
-		autor1.setNumPublicaciones(50);
+		//System.out.println(this.estudianteService.buscarTodos());
+	
+		Habitacion hab1 = new Habitacion();
+		hab1.setNumero("55");
+		hab1.setValor(new BigDecimal(100));
+		List<Habitacion> habitaciones = new ArrayList<>();
+		habitaciones.add(hab1);
 		
-		Autor autor2 = new Autor();
-		autor2.setApellido("Jacome");
-		autor2.setNombre("Kareen");
-		autor2.setNumPublicaciones(25);
+		Hotel hotel = new Hotel();
+		hotel.setNombre("Hilton Colon");
+		hotel.setDireccion("Av. Colon");
+		hotel.setHabitaciones(habitaciones);
 		
-		this.autorService.agregar(autor1);
-		this.autorService.agregar(autor2);
-
+		this.hotelService.agregar(hotel);
 		
-		System.out.println(this.autorService.buscarAutorDinamico("Jorge", "Borges", 50));
-		System.out.println(this.autorService.buscarAutorDinamico("Kareen", "Jacome", 25));
-
-*/
+		//this.hotelService.agregar(hotel);
 		
-		//this.autorService.borrarPorApellido("Jacome");
-		this.autorService.actualizarPublicaciones(50, "Luis");
+		//System.out.println(this.hotelService.buscarPorNombre("Hilton Colon"));
 	}
 }
 

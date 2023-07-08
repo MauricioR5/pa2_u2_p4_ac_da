@@ -32,4 +32,9 @@ public class HotelServiceImpl implements HotelService {
 		return this.hotelRepository.seleccionarPorNombre(nombre);
 	}
 
+	@Override
+	public Hotel buscarPorId(Integer Id) {
+		return this.hotelRepository.seleccionarPorId(Id);
+	}
+
 }
