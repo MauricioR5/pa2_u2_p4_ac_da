@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Autor;
+import com.example.demo.repository.modelo.Libro;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -120,6 +121,67 @@ public class AutorRepositoryImpl implements AutorRepository{
 		myQuery.setParameter("datonumPublicaciones", numPublicaciones);
 		myQuery.setParameter("datoNombre", nombre);
 		return myQuery.executeUpdate();
+	}
+
+	@Override
+	public List<Autor> seleccionarAutorJoin() {
+		
+		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT a FROM Autor a JOIN a.libros lb", Autor.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Libro> seleccionarLibroJoin() {
+		TypedQuery<Libro> myQuery = this.entityManager.createQuery("SELECT lb FROM Autor a JOIN a.libros lb", Libro.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Autor> seleccionarAutorRightJoin() {
+		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT a FROM Autor a RIGHT JOIN a.libros lb", Autor.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Libro> seleccionarLibroRightJoin() {
+		TypedQuery<Libro> myQuery = this.entityManager.createQuery("SELECT lb FROM Autor a RIGHT JOIN a.libros lb", Libro.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Autor> seleccionarAutorLeftJoin() {
+		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT a FROM Autor a LEFT JOIN a.libros lb", Autor.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Libro> seleccionarLibroLeftJoin() {
+		TypedQuery<Libro> myQuery = this.entityManager.createQuery("SELECT lb FROM Autor a LEFT JOIN a.libros lb", Libro.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Autor> seleccionarAutorFullJoin() {
+		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT a FROM Autor a FULL JOIN a.libros lb", Autor.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Libro> seleccionarLibroFullJoin() {
+		TypedQuery<Libro> myQuery = this.entityManager.createQuery("SELECT lb FROM Autor a FULL JOIN a.libros lb", Libro.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Autor> seleccionarAutorWhereJoin() {
+		TypedQuery<Autor> myQuery = this.entityManager.createQuery("SELECT a FROM Autor a, Libro lb WHERE a = lb.autor", Autor.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Libro> seleccionarLibroWhereJoin() {
+		TypedQuery<Libro> myQuery = this.entityManager.createQuery("SELECT lb FROM Autor a, Libro lb WHERE a = lb.autor", Libro.class);
+		return myQuery.getResultList();
 	}
 	
 	

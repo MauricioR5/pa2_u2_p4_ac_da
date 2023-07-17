@@ -1,6 +1,6 @@
 package com.example.demo.repository.modelo;
 
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,6 +30,11 @@ public class Autor {
 	
 	@Column(name = "autor_numeroPublicaciones")
 	private int numPublicaciones;
+	
+	@ManyToMany(mappedBy = "autores", cascade = CascadeType.ALL) 
+	private List<Libro> libros;
+	
+	
 
 	// Set y Get
 
@@ -64,6 +69,14 @@ public class Autor {
 
 	public void setNumPublicaciones(int numPublicaciones) {
 		this.numPublicaciones = numPublicaciones;
+	}
+
+	public List<Libro> getLibros() {
+		return libros;
+	}
+
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
 	}
 
 	@Override

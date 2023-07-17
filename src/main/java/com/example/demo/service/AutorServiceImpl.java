@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.AutorRepository;
 import com.example.demo.repository.modelo.Autor;
+import com.example.demo.repository.modelo.Libro;
 
 @Service
 public class AutorServiceImpl implements AutorService {
@@ -77,6 +78,56 @@ public class AutorServiceImpl implements AutorService {
 	@Override
 	public int actualizarPublicaciones(int numPublicaciones, String nombre) {
 		return this.autorRepository.actualizarPorNombre(numPublicaciones, nombre);
+	}
+
+	@Override
+	public List<Autor> buscarAutorJoin() {
+		return this.autorRepository.seleccionarAutorJoin();
+	}
+
+	@Override
+	public List<Libro> buscarLibroJoin() {
+		return this.autorRepository.seleccionarLibroJoin();
+	}
+
+	@Override
+	public List<Autor> buscarAutorRightJoin() {
+		return this.autorRepository.seleccionarAutorRightJoin();
+	}
+
+	@Override
+	public List<Libro> buscarLibroRightJoin() {
+		return this.autorRepository.seleccionarLibroRightJoin();
+	}
+
+	@Override
+	public List<Autor> buscarAutorLeftJoin() {
+		return this.autorRepository.seleccionarAutorLeftJoin();
+	}
+
+	@Override
+	public List<Libro> buscarLibroLeftJoin() {
+		return this.autorRepository.seleccionarLibroLeftJoin();
+	}
+
+	@Override
+	public List<Autor> buscarAutorFullJoin() {
+		return this.autorRepository.seleccionarAutorFullJoin();
+	}
+
+	@Override
+	public List<Libro> buscarLibroFullJoin() {
+		return this.autorRepository.seleccionarLibroFullJoin();
+	}
+
+	@Override
+	public List<Autor> buscarAutorWhereJoin() {
+		return this.autorRepository.seleccionarAutorWhereJoin();
+	}
+
+	@Override
+	public List<Libro> buscarLibroWhereJoin() {
+		return this.autorRepository.seleccionarLibroWhereJoin();
 	}
 
 	

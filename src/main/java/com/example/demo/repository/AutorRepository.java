@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.List;
 
 import com.example.demo.repository.modelo.Autor;
+import com.example.demo.repository.modelo.Libro;
 
 public interface AutorRepository {
 
@@ -30,4 +31,21 @@ public interface AutorRepository {
 	public int eliminarPorApellido(String apellido);
 	
 	public int actualizarPorNombre(int numPublicaciones, String nombre);
+	
+	public List<Autor> seleccionarAutorJoin();
+	public List<Libro> seleccionarLibroJoin();
+	
+	public List<Autor> seleccionarAutorRightJoin();
+	public List<Libro> seleccionarLibroRightJoin();
+	
+	public List<Autor> seleccionarAutorLeftJoin();
+	public List<Libro> seleccionarLibroLeftJoin();
+	
+	public List<Autor> seleccionarAutorFullJoin();
+	public List<Libro> seleccionarLibroFullJoin();
+	
+	public List<Autor> seleccionarAutorWhereJoin();
+	public List<Libro> seleccionarLibroWhereJoin();
+	
+	
 }

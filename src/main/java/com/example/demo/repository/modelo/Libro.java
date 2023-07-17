@@ -1,10 +1,12 @@
 package com.example.demo.repository.modelo;
 
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,10 +33,10 @@ public class Libro {
 	@Column(name = "libro_editorial")
 	private String editorial;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "autor_libro", joinColumns = @JoinColumn(name = "auli_id_libro"), inverseJoinColumns = @JoinColumn(name = "auli_id_autor"))
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name = "autor_libro")
 
-	private Set<Autor> autores;
+	private  List<Autor> autores;
 
 	// Set y Get
 	public Integer getId() {
@@ -60,13 +62,18 @@ public class Libro {
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
-
-	public Set<Autor> getAutores() {
+	public List<Autor> getAutores() {
 		return autores;
 	}
 
-	public void setAutores(Set<Autor> autores) {
+	public void setAutores(List<Autor> autores) {
 		this.autores = autores;
 	}
 
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", titulo=" + titulo + ", editorial=" + editorial + "]";
+	}
+
+	
 }
